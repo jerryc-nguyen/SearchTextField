@@ -365,10 +365,10 @@ open class SearchTextField: UITextField {
 
             var item = filterDataSource[i]
 
-            if self.justShowItemsAndDoesNoThing
+            if self.justShowItemsAndDoesNoThing {
                 item.attributedTitle = NSMutableAttributedString(string: item.title)
                 filteredResults.append(item)
-            elsif !inlineMode {
+            } else if !inlineMode {
                 // Find text in title and subtitle
                 let titleFilterRange = (item.title as NSString).range(of: text!, options: comparisonOptions)
                 let subtitleFilterRange = item.subtitle != nil ? (item.subtitle! as NSString).range(of: text!, options: comparisonOptions) : NSMakeRange(NSNotFound, 0)
