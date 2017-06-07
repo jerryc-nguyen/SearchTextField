@@ -17,6 +17,7 @@ open class SearchTextField: UITextField {
     open var maxNumberOfResults = 0
 
     open var justShowItemsAndDoesNoThing = false
+    open var searchTimeout = 0.8
 
     /// Maximum height of the results list
     open var maxResultsListHeight = 0
@@ -313,7 +314,7 @@ open class SearchTextField: UITextField {
         }
         // Detect pauses while typing
         timer?.invalidate()
-        timer = Timer.scheduledTimer(timeInterval: 0.8, target: self, selector: #selector(SearchTextField.typingDidStop), userInfo: self, repeats: false)
+        timer = Timer.scheduledTimer(timeInterval: self.searchTimeout, target: self, selector: #selector(SearchTextField.typingDidStop), userInfo: self, repeats: false)
 
         if text!.isEmpty {
             clearResults()
